@@ -33,7 +33,7 @@ public class BasicWebCrawler {
 
                 //5. For each extracted URL... go back to Step 4.
                 for (Element page : linksOnPage) {
-                    if(page.attr("abs:href").contains("www.mkyong.com")) {
+                    if(page.attr("abs:href").contains(URL.substring(URL.indexOf('.')))) {
                         getPageLinks(page.attr("abs:href"));
                     }
                 }
@@ -45,7 +45,7 @@ public class BasicWebCrawler {
 
     public static void main(String[] args) {
         //1. Pick a URL from the frontier
-        new BasicWebCrawler().getPageLinks("http://www.mkyong.com/");
+        new BasicWebCrawler().getPageLinks(args[0]);
     }
 
 }
